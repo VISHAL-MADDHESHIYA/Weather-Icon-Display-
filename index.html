@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Weather App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Container for Animated Effects -->
+    <div id="weather-effects-container"></div>
+
+    <main class="app-container" id="app-container">
+        <header class="app-header">
+            <h1>Weather App</h1>
+            <p>Select a condition to see the details</p>
+        </header>
+
+        <section class="controls">
+            <label for="weather-select" class="sr-only">Select Weather Condition</label>
+            <select id="weather-select" aria-describedby="weather-description">
+                <option value="default" disabled selected>Choose a condition...</option>
+                <option value="sunny">☀️ Sunny</option>
+                <option value="rainy">🌧️ Rainy</option>
+                <option value="snowy">❄️ Snowy</option>
+                <option value="cloudy">☁️ Cloudy</option>
+                <option value="stormy">⛈️ Stormy</option>
+            </select>
+        </section>
+
+        <section class="display-card" id="display-card" aria-live="polite">
+            <div class="icon-container" id="weather-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            </div>
+            <h2 class="condition-title" id="weather-title">Awaiting Selection</h2>
+            <p class="condition-desc" id="weather-description">Please select a weather condition from the dropdown above to see its details.</p>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

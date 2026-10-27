@@ -1,0 +1,170 @@
+:root {
+    /* Default Theme */
+    --bg-gradient: linear-gradient(135deg, #1e1e24, #3a3a4a);
+    --card-bg: rgba(255, 255, 255, 0.1);
+    --text-color: #ffffff;
+    --icon-color: #94a1b2;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg-gradient);
+    color: var(--text-color);
+    transition: background 0.8s ease-in-out, color 0.8s ease;
+    overflow: hidden; /* Prevents scrollbars from particles */
+}
+
+/* Accessibility Utility */
+.sr-only {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0, 0, 0, 0);
+    white-space: nowrap; border-width: 0;
+}
+
+/* App Card Styling */
+.app-container {
+    width: 90%;
+    max-width: 450px;
+    background: var(--card-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 24px;
+    padding: 2.5rem;
+    text-align: center;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    z-index: 10; /* Keeps card above particles */
+    transition: transform 0.3s ease, background 0.8s ease;
+}
+
+.app-header h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+.app-header p { font-size: 0.9rem; color: var(--text-color); opacity: 0.8; margin-bottom: 2rem; }
+
+select {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 12px;
+    border: none;
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--text-color);
+    font-size: 1rem;
+    cursor: pointer;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    text-align: center;
+    margin-bottom: 2rem;
+    transition: background 0.3s;
+}
+
+select:hover, select:focus { background: rgba(255, 255, 255, 0.25); }
+select option { background-color: #2b2b36; color: white; }
+
+.display-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    min-height: 200px;
+    justify-content: center;
+}
+
+.icon-container svg {
+    width: 80px; height: 80px;
+    stroke: var(--icon-color);
+    transition: stroke 0.5s ease, transform 0.5s ease;
+}
+
+/* =========================================
+   BACKGROUND ANIMATION EFFECTS
+   ========================================= */
+
+#weather-effects-container {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    pointer-events: none; /* Allows clicking through */
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* 1. Rain Animation */
+.rain-drop {
+    position: absolute;
+    width: 2px;
+    height: 25px;
+    background: rgba(255, 255, 255, 0.4);
+    bottom: 100%;
+    animation: rainFall linear infinite;
+}
+@keyframes rainFall {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(100vh); }
+}
+
+/* 2. Snow Animation */
+.snow-flake {
+    position: absolute;
+    color: white;
+    bottom: 100%;
+    animation: snowFall linear infinite;
+    user-select: none;
+}
+@keyframes snowFall {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(360deg); opacity: 0.5; }
+}
+
+/* 3. Cloud Animation */
+.cloud-shape {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    filter: blur(30px);
+    animation: floatClouds linear infinite;
+}
+@keyframes floatClouds {
+    0% { transform: translateX(-20vw); }
+    100% { transform: translateX(120vw); }
+}
+
+/* 4. Lightning Flash (Storm) */
+.lightning-flash {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: white;
+    opacity: 0;
+    animation: flash 6s infinite;
+}
+@keyframes flash {
+    0%, 92%, 96%, 100% { opacity: 0; }
+    93%, 95% { opacity: 0.3; }
+    94% { opacity: 0.1; }
+}
+
+/* 5. Sunny Glow */
+.sun-glow {
+    position: absolute;
+    top: -20vh; right: -10vw;
+    width: 60vw; height: 60vw;
+    background: radial-gradient(circle, rgba(255, 223, 0, 0.4) 0%, transparent 60%);
+    border-radius: 50%;
+    animation: pulseSun 4s ease-in-out infinite alternate;
+}
+@keyframes pulseSun {
+    0% { transform: scale(0.9); opacity: 0.7; }
+    100% { transform: scale(1.1); opacity: 1; }
+}

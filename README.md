@@ -32,7 +32,9 @@ The default state is provided in two ways:
 
 ## 🌐 Deployment
 This project is deployed using **GitHub Pages**.
-*Deployment Link:* [Insert your GitHub Pages Link Here]
+*Deployment Link:*  https://vishal-maddheshiya.github.io/Weather-Icon-Display-/
+
+*Github Link:*  https://github.com/VISHAL-MADDHESHIYA/Weather-Icon-Display-/
 
 ## 📸 Rollback Evidence
 *(Note for the intern: If you made a mistake during deployment, document it here. For example: "Initial deployment pushed to wrong branch. Reverted via `git revert <commit-hash>` and re-deployed successfully.")*
